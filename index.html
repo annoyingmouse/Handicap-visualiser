@@ -1,10 +1,130 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Portsmouth</title>
+    <link href="
+    https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css
+    " rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sakura.css/css/sakura.css" type="text/css">
+  <body>
+    <h1>Handicap visualiser</h1>
+    <label for="round">Round</label>
+    <select name="round" id="round">
+      <option value="Albion  Windsor.json">Albion Windsor</option>
+      <option value="Albion.json">Albion</option>
+      <option value="American.json">American</option>
+      <option value="Bray I.json">Bray I</option>
+      <option value="Bray II.json">Bray II</option>
+      <option value="Bristol I   Hereford.json">Bristol I Hereford</option>
+      <option value="Bristol II.json">Bristol II</option>
+      <option value="Bristol III.json">Bristol III</option>
+      <option value="Bristol IV.json">Bristol IV</option>
+      <option value="Bristol V.json">Bristol V</option>
+      <option value="Burntwood - American.json">Burntwood - American</option>
+      <option value="Burntwood - Hereford Bristol.json">Burntwood - Hereford Bristol</option>
+      <option value="Burntwood - National.json">Burntwood - National</option>
+      <option value="Burntwood - St George.json">Burntwood - St George</option>
+      <option value="Burntwood - St Nicholas.json">Burntwood - St Nicholas</option>
+      <option value="Burntwood - Warwick.json">Burntwood - Warwick</option>
+      <option value="Burntwood - Western.json">Burntwood - Western</option>
+      <option value="Burntwood - York.json">Burntwood - York</option>
+      <option value="Burntwood Long Metric.json">Burntwood Long Metric</option>
+      <option value="Burntwood M900.json">Burntwood M900</option>
+      <option value="Burntwood Short Metric.json">Burntwood Short Metric</option>
+      <option value="Combined WA 18 25.json">Combined WA 18 25</option>
+      <option value="Double WA 720 (50m).json">Double WA 720 (50m)</option>
+      <option value="Double WA 720 (70m).json">Double WA 720 (70m)</option>
+      <option value="Half Metric I.json">Half Metric I</option>
+      <option value="Half Metric II.json">Half Metric II</option>
+      <option value="Half WA 1440 Gents.json">Half WA 1440 Gents</option>
+      <option value="Junior Burntwood - Albion.json">Junior Burntwood - Albion</option>
+      <option value="Junior Burntwood - American.json">Junior Burntwood - American</option>
+      <option value="Junior Burntwood - Hereford.json">Junior Burntwood - Hereford</option>
+      <option value="Junior Burntwood - National.json">Junior Burntwood - National</option>
+      <option value="Junior Burntwood - St George.json">Junior Burntwood - St George</option>
+      <option value="Junior Burntwood - St Nicholas.json">Junior Burntwood - St Nicholas</option>
+      <option value="Junior Burntwood - Warwick.json">Junior Burntwood - Warwick</option>
+      <option value="Junior Burntwood - Western.json">Junior Burntwood - Western</option>
+      <option value="Junior Burntwood - York.json">Junior Burntwood - York</option>
+      <option value="Junior National.json">Junior National</option>
+      <option value="Junior Warwick.json">Junior Warwick</option>
+      <option value="Junior Western.json">Junior Western</option>
+      <option value="Junior Windsor.json">Junior Windsor</option>
+      <option value="Long Metric Gents.json">Long Metric Gents</option>
+      <option value="Long Metric I.json">Long Metric I</option>
+      <option value="Long Metric II.json">Long Metric II</option>
+      <option value="Long Metric III.json">Long Metric III</option>
+      <option value="Long Metric IV.json">Long Metric IV</option>
+      <option value="Long Metric Ladies.json">Long Metric Ladies</option>
+      <option value="Long Metric V.json">Long Metric V</option>
+      <option value="Long National.json">Long National</option>
+      <option value="Long Warwick.json">Long Warwick</option>
+      <option value="Long Western.json">Long Western</option>
+      <option value="Metric I.json">Metric I</option>
+      <option value="Metric II.json">Metric II</option>
+      <option value="Metric III.json">Metric III</option>
+      <option value="Metric IV.json">Metric IV</option>
+      <option value="Metric V.json">Metric V</option>
+      <option value="National.json">National</option>
+      <option value="New National.json">New National</option>
+      <option value="New Warwick.json">New Warwick</option>
+      <option value="New Western.json">New Western</option>
+      <option selected value="Portsmouth.json">Portsmouth</option>
+      <option value="Short Junior National.json">Short Junior National</option>
+      <option value="Short Junior Warwick.json">Short Junior Warwick</option>
+      <option value="Short Junior Western.json">Short Junior Western</option>
+      <option value="Short Junior Windsor.json">Short Junior Windsor</option>
+      <option value="Short Metric II.json">Short Metric II</option>
+      <option value="Short Metric III.json">Short Metric III</option>
+      <option value="Short Metric IV.json">Short Metric IV</option>
+      <option value="Short Metric V.json">Short Metric V</option>
+      <option value="Short Metric.json">Short Metric</option>
+      <option value="Short National.json">Short National</option>
+      <option value="Short Warwick.json">Short Warwick</option>
+      <option value="Short Western.json">Short Western</option>
+      <option value="Short Windsor.json">Short Windsor</option>
+      <option value="St. George.json">St</option>
+      <option value="St. Nicholas.json">St</option>
+      <option value="Stafford.json">Stafford</option>
+      <option value="Vegas.json">Vegas</option>
+      <option value="WA 1440 Gents.json">WA 1440 Gents</option>
+      <option value="WA 1440 Ladies.json">WA 1440 Ladies</option>
+      <option value="WA 18m.json">WA 18m</option>
+      <option value="WA 25m.json">WA 25m</option>
+      <option value="WA 30m.json">WA 30m</option>
+      <option value="WA 720 50m (122cm).json">WA 720 50m (122cm)</option>
+      <option value="WA 720 50m (80cm).json">WA 720 50m (80cm)</option>
+      <option value="WA 720 60m.json">WA 720 60m</option>
+      <option value="WA 720 70m.json">WA 720 70m</option>
+      <option value="WA 900.json">WA 900</option>
+      <option value="WA Standard Bow Round.json">WA Standard Bow Round</option>
+      <option value="WA VI Indoor.json">WA VI Indoor</option>
+      <option value="WA VI Outdoor (1440).json">WA VI Outdoor (1440)</option>
+      <option value="Warwick.json">Warwick</option>
+      <option value="Western.json">Western</option>
+      <option value="Windsor.json">Windsor</option>
+      <option value="Worcester.json">Worcester</option>
+      <option value="York.json">York</option>
+    </select>
+    <div style="display: flex; flex-direction: row; justify-content: space-between;">
+      <div style="flex:1;">
+        <label for="bow">Bow</label>
+        <select name="bow" id="bow">
+          <option disabled>Please choose...</option>
+        </select>
+      </div>
+      <div style="flex:1;">
+        <label for="category">Category</label>
+        <select name="category" id="category">
+          <option disabled>Please choose...</option>
+        </select>
+      </div>
+    </div>
+    <div>
+      <canvas id="chart"></canvas>
+    </div>
+    <script type="module" src="./script.js"></script>
+  </body>
 </html>
