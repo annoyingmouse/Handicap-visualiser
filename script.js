@@ -1,7 +1,13 @@
+// Based on https://observablehq.com/d/f8a80e22de0f241f
 import { Chart, registerables } from "https://cdn.skypack.dev/chart.js@4.4.7";
 Chart.register(...registerables);
 
+const polynomeDegree = 15;
+
+const functionText = document.getElementById("function");
+
 const processData = (d, c, b) => {
+  let str = `const ${d[0].round.replaceAll(" ", "_")}${b}${c}Handicap = (x) => Math.round(`;
   let polyD = {
     x: [],
     y: [],
@@ -16,8 +22,18 @@ const processData = (d, c, b) => {
     polyD.y.push(item.y);
   });
   const poly = new Polyfit(polyD.x, polyD.y);
-  const polynomeTerms = poly.computeCoefficients(30);
-  const solver = poly.getPolynomial(30);
+  const polynomeTerms = poly.computeCoefficients(polynomeDegree);
+  str += polynomeTerms[0];
+  for (var i = 1; i <= polynomeDegree; i++) {
+    polynomeTerms[i] >= 0 ? (str += " + ") : (str += " - ");
+    str +=
+      i === 1
+        ? Math.abs(polynomeTerms[i]) + " * x"
+        : `${Math.abs(polynomeTerms[i])} * Math.pow(x, ${i})`;
+  }
+  str += ");";
+  functionText.value = str;
+  const solver = poly.getPolynomial(polynomeDegree);
   const fittingCurve = [];
   let x_ = [];
   let y_ = [];
@@ -28,7 +44,6 @@ const processData = (d, c, b) => {
     y_[i] = solver(x_[i]);
     fittingCurve.push({ x: x_[i], y: y_[i] });
   }
-  console.log(polynomeTerms, fittingCurve);
   return {
     datasets: [
       {
@@ -71,7 +86,7 @@ const config = {
   },
 };
 
-const populateSelect = (select, data, baseItem) => {
+const populateSelect = (select, data) => {
   select.innerHTML = "";
   data.forEach((item) => {
     const option = document.createElement("wa-option");
@@ -95,8 +110,8 @@ const uniq = (items) => [...new Set(items)];
   let currentBow = "Recurve";
   let currentCategory = "SNRM";
   config.data = processData(roundData, currentCategory, currentBow);
-  populateSelect(bowSelect, uniqBows, currentBow);
-  populateSelect(categorySelect, uniqCategories, currentCategory);
+  populateSelect(bowSelect, uniqBows);
+  populateSelect(categorySelect, uniqCategories);
   bowSelect.addEventListener("change", (event) => {
     currentBow = event.target.value;
     config.data = processData(roundData, currentCategory, currentBow);
@@ -116,8 +131,8 @@ const uniq = (items) => [...new Set(items)];
     );
     uniqBows = uniq(roundData.map((item) => item.bow));
     uniqCategories = uniq(roundData.map((item) => item.category));
-    populateSelect(bowSelect, uniqBows, currentBow);
-    populateSelect(categorySelect, uniqCategories, currentCategory);
+    populateSelect(bowSelect, uniqBows);
+    populateSelect(categorySelect, uniqCategories);
     config.data = processData(roundData, currentCategory, currentBow);
     chart.update();
   });
